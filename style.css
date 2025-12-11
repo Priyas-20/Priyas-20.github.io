@@ -395,7 +395,8 @@ body:not(.modal-open) .coc-interface-button{z-index:5000 !important}
 /* ----------------- Defense Building Icons ---------------- */
 .def-building {
   position: absolute;
-  width: 7.5%;
+  width: 5%;
+  height:auto;
   cursor: pointer;
   z-index: 60;
   transition: transform 0.14s ease, filter 0.14s ease;
