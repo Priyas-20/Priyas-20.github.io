@@ -289,28 +289,22 @@ document.addEventListener('click', function(e){
   const skillsData = {
     army: [
       { title: 'SQL', img: 'assets/images/units/barbarian.png', desc: '4 years' },
-      { title: 'Python, ', img: 'assets/images/units/archer.png', desc: '4 years' },
-      { title: 'C, ', img: 'assets/images/units/archer.png', desc: '5 years' },
-      { title: 'Automation, ', img: 'assets/images/units/archer.png', desc: '2 years' },
-      { title: 'ETL Pipelines, ', img: 'assets/images/units/archer.png', desc: '1.5 years' },
-      { title: 'Cloud Tools ', img: 'assets/images/units/archer.png', desc: '3 years' },
-      { title: 'JavaScript', img: 'assets/images/units/giant.png', desc: '6 months' }
+      { title: 'Python, C, JavaScript', img: 'assets/images/units/archer.png', desc: '4 years' },
+      { title: 'Automation, ETL Pipelines', img: 'assets/images/units/archer.png', desc: '2 years' },
+      { title: 'Cloud Tools ', img: 'assets/images/units/archer.png', desc: '3 years' }
     ],
     barracks: [
-      { title: 'Healer', img: 'assets/images/units/healer.png', desc: 'Heals ground units (support).' },
-      { title: 'Wizard', img: 'assets/images/units/wizard.png', desc: 'High single-target damage.' }
+      { title: 'Customer Experience, A/B Testing', img: 'assets/images/units/healer.png', desc: 'Have been performing A/B testing of the features on targetted customer segment.' },
+      { title: 'Product Roadmap Support, Program Management', img: 'assets/images/units/barbarian.png', desc: 'Responsible to build Product Roadmap and get it done with the help of team.' },
+      { title: 'Stakeholder Management, Cross-functional Collaboration', img: 'assets/images/units/wizard.png', desc: 'Responsible to gather Stakeholder requirements and get them done.' }
     ],
     dark_barracks: [
-      { title: 'Minion', img: 'assets/images/units/minion.png', desc: 'Flying dark elixir unit.' },
-      { title: 'Hog Rider', img: 'assets/images/units/hog_rider.png', desc: 'Fast attacker that targets defenses.' }
+      { title: 'Open-source LLMs', img: 'assets/images/units/minion.png', desc: 'Have build chatbots using GenAI tools for specified product area' },
+      { title: 'Personalization', img: 'assets/images/units/hog_rider.png', desc: 'Leveraged AI to introduce "Best for You" feature, which suggest the best product as per user profile for the searched qeury.' }
     ],
     spell_factory: [
-      { title: 'Heal Spell', img: 'assets/images/spells/heal_spell.png', desc: 'Restores HP to units in its area.' },
-      { title: 'Rage Spell', img: 'assets/images/spells/rage_spell.png', desc: 'Increases damage & speed.' }
-    ],
-    dark_spell_factory: [
-      { title: 'Poison Spell', img: 'assets/images/spells/poison_spell.png', desc: 'Damage-over-time for enemy troops.' },
-      { title: 'Earthquake', img: 'assets/images/spells/earthquake.png', desc: 'Deals structural damage.' }
+      { title: 'Data Analytics and Visualization, Analytical Thinking', img: 'assets/images/spells/heal_spell.png', desc: '4 years' },
+      { title: 'Problem Solving, Leadership, Business Acumen', img: 'assets/images/spells/rage_spell.png', desc: '2.5 years' }
     ]
   };
 
