@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chief Priyas Paulzagade - Player Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-height: 400px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+body {
+    background-color: #fafaf9;
+    color: #292524;
+}
+.tab-active {
+    background-color: #fcd34d;
+    border-left: 4px solid #b45309;
+    font-weight: 600;
+}
+.tab-inactive {
+    background-color: #f5f5f4;
+    border-left: 4px solid transparent;
+}
+.tab-inactive:hover {
+    background-color: #e7e5e4;
+}
+</style>
+</head>
+<body class="antialiased p-4 md:p-8">
+
+<!-- Chosen Palette: Warm Stone Neutrals with Amber (Gold) and Fuchsia (Elixir) Accents -->
+<!-- Application Structure Plan: The SPA is structured as an interactive 'Player Dashboard'. It moves away from a linear document to a modular grid. The top section introduces the user and provides a high-level statistical overview (Player Bio & Metrics). The middle section uses a tabbed interface for the 'War Log' (Experience) to prevent vertical scrolling and allow focused reading of specific roles. The 'Laboratory' (Skills) uses a Radar chart for quick visual comprehension of skill distribution, followed by categorized lists. Finally, entrepreneurial projects and education are presented as distinct 'bases' (cards) at the bottom. This layout prioritizes data exploration and visual impact. -->
+<!-- Visualization & Content Choices: 1. Goal: High-level metric impact -> Horizontal Bar Chart (Canvas) -> Shows efficiency/revenue metrics at a glance. 2. Goal: Skill distribution -> Radar Chart (Canvas) -> Visually demonstrates the balance of technical, product, and AI skills. 3. Goal: Explore work history -> Interactive Tabs (JS/HTML) -> Allows user to click through companies to read detailed achievements without losing page context. Confirming NO SVG/Mermaid used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<div class="max-w-6xl mx-auto space-y-8">
+
+    <header class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-stone-800 flex items-center gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl shadow-inner">⭐4</span>
+                Chief Priyas Paulzagade
+            </h1>
+            <p class="text-xl text-stone-600 font-medium mt-1">Level 4 Data Analyst & Strategist</p>
+        </div>
+        <div class="flex flex-col gap-1 text-sm md:text-right font-medium text-stone-600">
+            <p>🏷️ priyas.paulzagade1@gmail.com</p>
+            <p>📱 +91-9404789796</p>
+            <p>🔗 LinkedIn | LeetCode | HackerRank</p>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <section class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 border-b pb-2"><span class="text-amber-500">ℹ️</span> Player Bio & Impact Summary</h2>
+            <p class="text-stone-700 mb-6 leading-relaxed">
+                This section provides a high-level overview of the player's core strategy and cumulative statistical impact. The chart visualizes key efficiency and growth metrics achieved across various campaigns, demonstrating a consistent ability to maximize resources and protect platform integrity.
+            </p>
+            <p class="text-stone-700 font-medium mb-6">
+                Data-driven Business Analyst with a 3-star track record in monetization, causal inference, and building robust data pipelines. Proven ability to scale technical resources, protect platform integrity, and maximize metrics through advanced A/B testing and GenAI tools.
+            </p>
+            <div class="chart-container">
+                <canvas id="impactChart"></canvas>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 border-b pb-2"><span class="text-fuchsia-600">🧪</span> The Laboratory (Skills & Capacity)</h2>
+            <p class="text-stone-700 mb-6 leading-relaxed">
+                Explore the player's technical and strategic capacities here. The radar chart illustrates the balance between different analytical disciplines, while the resource lists detail specific tools and methodologies available for deployment. Hover over the chart nodes for precise skill ratings.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="chart-container" style="max-width: 300px;">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-fuchsia-50 p-3 rounded-lg border border-fuchsia-100">
+                        <h3 class="font-bold text-fuchsia-800 flex items-center gap-2">🟣 Spells & Strategy (Product)</h3>
+                        <p class="text-sm text-fuchsia-900 mt-1">LiveOps, Monetization Planning, A/B Testing, Causal Inference, Econometrics, Customer Experience</p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                        <h3 class="font-bold text-amber-800 flex items-center gap-2">🟡 Resource Gatherers (Technical)</h3>
+                        <p class="text-sm text-amber-900 mt-1">Spark, Databricks, SQL (BigQuery/MySQL), Python, C, ETL Pipelines, Cloud Tools (GCP, AWS)</p>
+                    </div>
+                    <div class="bg-stone-100 p-3 rounded-lg border border-stone-200">
+                        <h3 class="font-bold text-stone-800 flex items-center gap-2">⚫ Dark Elixir Tech (AI/ML)</h3>
+                        <p class="text-sm text-stone-900 mt-1">Open-source LLMs, Speech-to-Text, Automation with ML models, Predictive Analytics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+        <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 border-b pb-2"><span class="text-emerald-600">⚔️</span> Clan War Log (Work Experience)</h2>
+        <p class="text-stone-700 mb-6 leading-relaxed">
+            This interactive log details the outcomes of major professional deployments. Select a clan (company) from the list on the left to review the specific attack strategies, automated defenses built, and total loot (revenue/efficiency) secured during that tenure.
+        </p>
+        
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="w-full md:w-1/3 flex flex-col gap-2" id="job-tabs">
+            </div>
+            
+            <div class="w-full md:w-2/3 bg-stone-50 p-6 rounded-xl border border-stone-200 min-h-[300px]" id="job-details">
+            </div>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <section class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 border-b pb-2"><span class="text-stone-600">⚒️</span> Builder Base (Entrepreneurial)</h2>
+            <p class="text-stone-700 mb-6 leading-relaxed">
+                Independent projects and base designs engineered outside of primary clan operations. These highlights showcase end-to-end product leadership and community impact.
+            </p>
+            <div class="space-y-4">
+                <div class="p-4 border border-stone-200 rounded-lg hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-lg text-stone-800">⭐ Surplus2Support Initiative</h3>
+                    <p class="text-sm text-stone-500 font-medium mb-2">Founder | Non-profit</p>
+                    <p class="text-sm text-stone-700">Designed predictive analytics to forecast daily food requirements. Scaled operations to support 15+ families daily and successfully exited via acquisition.</p>
+                </div>
+                <div class="p-4 border border-stone-200 rounded-lg hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-lg text-stone-800">⭐ AuraskaTech</h3>
+                    <p class="text-sm text-stone-500 font-medium mb-2">Founder | EdTech Platform</p>
+                    <p class="text-sm text-stone-700">Defined product roadmap and led cross-functional team execution, delivering scalable software solutions and improving student outcomes.</p>
+                </div>
+                <div class="p-4 border border-stone-200 rounded-lg hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-lg text-stone-800">🟣 Apple TV & ML Integrations</h3>
+                    <p class="text-sm text-stone-500 font-medium mb-2">Freelance Developer</p>
+                    <p class="text-sm text-stone-700">Developed prediction models for search intent resolution and integrated open-source speech-to-text models into live client tools.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col gap-8">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 border-b pb-2"><span class="text-amber-600">🏆</span> Trophy Case (Achievements)</h2>
+                <p class="text-stone-700 mb-4 leading-relaxed">Key milestones and external validations of strategic prowess.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <span class="text-xl">🛡️</span>
+                        <div>
+                            <p class="font-bold text-stone-800">Mentor at Coding Ninjas</p>
+                            <p class="text-sm text-stone-600">Guided 50+ individuals to develop Data Analytics Skills.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-xl">🛡️</span>
+                        <div>
+                            <p class="font-bold text-stone-800">All India Rank 225</p>
+                            <p class="text-sm text-stone-600">National Engineering Olympiad 2020.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-xl">⚔️</span>
+                        <div>
+                            <p class="font-bold text-stone-800">National Chess Championship</p>
+                            <p class="text-sm text-stone-600">Competed in the West Zonal, representing the University.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 flex-grow">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 border-b pb-2"><span class="text-blue-500">🏛️</span> Town Hall Upgrades</h2>
+                <p class="text-stone-700 mb-4 leading-relaxed">Foundational training and academic infrastructure.</p>
+                <div class="mb-4">
+                    <h3 class="font-bold text-stone-800 flex items-center gap-2">📖 B.Tech in Computer Engineering</h3>
+                    <p class="text-sm text-stone-600">Government College of Engineering | 87.6% | 2022</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-stone-800 flex items-center gap-2">🧪 Certifications</h3>
+                    <p class="text-sm text-stone-600">Google Data Analytics, Google Cloud Tools, Google Cloud Platform</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script>
+const workData = [
+    {
+        id: 'amazon',
+        company: 'Amazon, India',
+        role: 'Business Analyst',
+        level: 'Town Hall 12',
+        dates: 'Aug 2025 - Present',
+        bullets: [
+            "⭐ <strong>Flawless Defense:</strong> Fostered a hypothesis-driven insights culture by leading investigations into customer behavior, driving data-backed signup triggers that reduced unrecognized sessions by 14% QoQ.",
+            "⭐ <strong>Loot Multiplier:</strong> Enhanced experimentation capabilities by designing and executing rigorous A/B tests utilizing causal inference, resulting in a ~90-100% projected revenue increase for targeted segments.",
+            "🛡️ <strong>LiveOps Strategy:</strong> Partnered cross-functionally with product and engineering teams to define milestone strategies, driving a 2.4x increase in units per purchase.",
+            "🟣 <strong>Resource Generation:</strong> Designed and built automated Spark and Databricks pipelines to ensure reliable, version-controlled updates of complex datasets.",
+            "🟡 Owned the Emerging Markets Single Source of Truth dataset, evolving canonical revenue schemas.",
+            "⚒️ Automated recurring reporting workflows, reducing manual operational overhead."
+        ]
+    },
+    {
+        id: 'google',
+        company: 'Google, Hyderabad',
+        role: 'Engineering Analyst II',
+        level: 'Town Hall 11',
+        dates: 'Feb 2023 – July 2025',
+        bullets: [
+            "⭐ <strong>Base Defense:</strong> Protected platform revenue streams by analyzing abuse patterns, co-developing an automated detection model that terminated 100,000+ abusive channels in its first quarter.",
+            "🛡️ Led end-to-end data analytics projects within the YouTube Monetization ecosystem, from drafting PRDs to delivering robust ETL pipelines.",
+            "🧪 Defined requirements for a Gemini-powered internal tool that streamlined daily operations and eliminated 60% of manual work.",
+            "🏰 <strong>Troop Management:</strong> Led three vendor teams in task allocation and code review, ensuring high-quality delivery."
+        ]
+    },
+    {
+        id: 'flairlabs',
+        company: 'FlairLabs, Mumbai',
+        role: 'Software Engineer',
+        level: 'Town Hall 10',
+        dates: 'Apr 2022 - July 2022',
+        bullets: [
+            "🛡️ Built a predictive analytics model for ticket volume forecasting, improving staffing efficiency and reducing SLA breaches.",
+            "🛡️ Contributed to frontend development using web technologies (Angular, JavaScript, HTML/CSS)."
+        ]
+    }
+];
+
+function renderTabs() {
+    const tabContainer = document.getElementById('job-tabs');
+    tabContainer.innerHTML = '';
+    
+    workData.forEach(job => {
+        const btn = document.createElement('button');
+        btn.className = `text-left p-4 rounded-lg transition-colors duration-200 cursor-pointer ${job.id === currentJobId ? 'tab-active' : 'tab-inactive'}`;
+        btn.onclick = () => selectJob(job.id);
+        
+        btn.innerHTML = `
+            <div class="font-bold text-lg">${job.company}</div>
+            <div class="text-sm opacity-80">${job.role}</div>
+            <div class="text-xs mt-1 font-mono opacity-60 px-2 py-1 bg-black/5 rounded inline-block">Lvl: ${job.level}</div>
+        `;
+        tabContainer.appendChild(btn);
+    });
+}
+
+function renderJobDetails() {
+    const detailsContainer = document.getElementById('job-details');
+    const job = workData.find(j => j.id === currentJobId);
+    
+    if(!job) return;
+
+    let bulletsHtml = job.bullets.map(b => `<li class="mb-3 text-stone-700 leading-relaxed">${b}</li>`).join('');
+
+    detailsContainer.innerHTML = `
+        <div class="flex justify-between items-start mb-6 border-b border-stone-200 pb-4">
+            <div>
+                <h3 class="text-2xl font-bold text-stone-900">${job.role}</h3>
+                <h4 class="text-lg text-amber-700 font-medium">${job.company}</h4>
+            </div>
+            <div class="text-right">
+                <span class="text-sm font-bold bg-stone-200 text-stone-700 px-3 py-1 rounded-full">${job.dates}</span>
+            </div>
+        </div>
+        <ul class="list-none">
+            ${bulletsHtml}
+        </ul>
+    `;
+}
+
+let currentJobId = 'amazon';
+
+function selectJob(id) {
+    currentJobId = id;
+    renderTabs();
+    renderJobDetails();
+}
+
+function initCharts() {
+    const ctxImpact = document.getElementById('impactChart').getContext('2d');
+    new Chart(ctxImpact, {
+        type: 'bar',
+        data: {
+            labels: ['Proj. Revenue Increase (%)', 'Manual Work Eliminated (%)', 'Unrecognized Sessions Reduced (%)', 'Units Per Purchase Multiplier (x10)'],
+            datasets: [{
+                label: 'Performance Multipliers',
+                data: [95, 60, 14, 24],
+                backgroundColor: [
+                    'rgba(245, 158, 11, 0.8)', 
+                    'rgba(192, 38, 211, 0.8)', 
+                    'rgba(5, 150, 105, 0.8)', 
+                    'rgba(37, 99, 235, 0.8)'   
+                ],
+                borderColor: [
+                    'rgba(217, 119, 6, 1)',
+                    'rgba(162, 28, 175, 1)',
+                    'rgba(4, 120, 87, 1)',
+                    'rgba(29, 78, 216, 1)'
+                ],
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) { label += ': '; }
+                            if (context.dataIndex === 3) {
+                                label += (context.parsed.x / 10) + 'x';
+                            } else {
+                                label += context.parsed.x + '%';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    const ctxSkills = document.getElementById('skillsChart').getContext('2d');
+    new Chart(ctxSkills, {
+        type: 'radar',
+        data: {
+            labels: ['Data Engineering', 'A/B Testing', 'Causal Inference', 'GenAI / LLMs', 'Product Strategy', 'Automation'],
+            datasets: [{
+                label: 'Skill Proficiency Level',
+                data: [95, 90, 85, 80, 85, 90],
+                backgroundColor: 'rgba(192, 38, 211, 0.2)',
+                borderColor: 'rgba(192, 38, 211, 1)',
+                pointBackgroundColor: 'rgba(245, 158, 11, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(245, 158, 11, 1)'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.1)' },
+                    grid: { color: 'rgba(0,0,0,0.1)' },
+                    pointLabels: {
+                        font: { size: 11, family: 'sans-serif' },
+                        color: '#444'
+                    },
+                    ticks: {
+                        display: false,
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    selectJob('amazon');
+    initCharts();
+});
+</script>
+</body>
+</html>
